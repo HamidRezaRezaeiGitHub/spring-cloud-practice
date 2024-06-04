@@ -2,7 +2,7 @@ package com.frankmoley.lil.roomservice.api;
 
 import com.frankmoley.lil.roomservice.data.Room;
 import com.frankmoley.lil.roomservice.data.RoomRepository;
-import com.frankmoley.lil.roomservice.error.BadReqeustException;
+import com.frankmoley.lil.roomservice.error.BadRequestException;
 import com.frankmoley.lil.roomservice.error.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +43,7 @@ public class RoomController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateRoom(@PathVariable("id") long id, @RequestBody Room room) {
         if (id != room.getRoomId()) {
-            throw new BadReqeustException("id in body doesn't match path");
+            throw new BadRequestException("id in body doesn't match path");
         }
         this.roomRepository.save(room);
     }

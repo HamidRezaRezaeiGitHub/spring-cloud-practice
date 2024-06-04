@@ -2,7 +2,7 @@ package com.frankmoley.lil.guestservice.api;
 
 import com.frankmoley.lil.guestservice.data.Guest;
 import com.frankmoley.lil.guestservice.data.GuestRepository;
-import com.frankmoley.lil.guestservice.error.BadReqeustException;
+import com.frankmoley.lil.guestservice.error.BadRequestException;
 import com.frankmoley.lil.guestservice.error.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -48,7 +48,7 @@ public class GuestController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateGuest(@PathVariable("id") Long id, @RequestBody Guest guest) {
         if (id != guest.getGuestId()) {
-            throw new BadReqeustException("incoming id in body doesn't match path");
+            throw new BadRequestException("incoming id in body doesn't match path");
         }
         this.guestRepository.save(guest);
     }

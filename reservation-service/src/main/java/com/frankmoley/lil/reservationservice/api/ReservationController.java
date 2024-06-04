@@ -31,7 +31,7 @@ public class ReservationController {
 
     @GetMapping
     public List<Reservation> getAll(@RequestParam(value = "guestId", required = false) Long guestId, @RequestParam(value = "date", required = false) String dateString) {
-        Iterable<ReservationEntity> entities = null;
+        Iterable<ReservationEntity> entities;
         List<Reservation> reservations = new ArrayList<>();
         if (StringUtils.hasLength(dateString) && guestId != null) {
             try {
